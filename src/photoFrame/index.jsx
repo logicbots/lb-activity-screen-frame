@@ -4,18 +4,16 @@ import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import * as tf from "@tensorflow/tfjs";
 import * as tmPose from "@teachablemachine/pose";
 import './index.css';
-// import FrameSvg from "./home-frame-photo.svg";
-
 import Icon from './Icon';
 
 
 const Tensor = () => {
 
-    const videoConstraints = {
-        width: 800,
-        height: 800,
-        facingMode: 'user',
-    }
+    // const videoConstraints = {
+    //     width: 800,
+    //     height: 800,
+    //     facingMode: 'user',
+    // }
 
     const [picture, setPicture] = useState('')
     const webcamRef = React.useRef(null)
@@ -64,11 +62,11 @@ const Tensor = () => {
         const prediction = await model.predict(posenetOutput);
 
         for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-            console.log("classPrediction>>>>>", classPrediction)
-            console.log("prediction[i].probability.toFixed(2)>>>>>>>", prediction[i].probability.toFixed(2))
+            // const classPrediction =
+            //     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            // labelContainer.childNodes[i].innerHTML = classPrediction;
+            // console.log("classPrediction>>>>>", classPrediction)
+            // console.log("prediction[i].probability.toFixed(2)>>>>>>>", prediction[i].probability.toFixed(2))
             if ((i == 1 || i == 2) && prediction[i].probability.toFixed(2) == 1) {
                 console.log("correct pose>>>>>>>>>")
                 capture()
@@ -120,8 +118,6 @@ const Tensor = () => {
             }
 
         </div>
-
-
     )
 }
 
